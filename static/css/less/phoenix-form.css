@@ -14,3 +14,17 @@
 }
 @media (max-width: 767px) {
 }
+.phoenix-form {
+  margin: 0 auto;
+  width: 100%;
+}
+.phoenix-form table {
+  margin: 0 auto;
+  width: 90%;
+}
+.phoenix-form table tr {
+  padding: 5px 0 5px 0;
+}
+.phoenix-form table tr td {
+  padding: 4px;
+}
