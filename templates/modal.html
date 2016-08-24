@@ -1,0 +1,25 @@
+{% csrf_token %}
+<div class="modal fade" id="{{ id }}" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="{{ action }}" method="post" {% if enctype %}enctype="{{ enctype }}"{% endif %}>
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">{{ title }}</h4>
+                </div>
+                <div class="modal-body">
+                    {% if form %}
+                        {% include 'form.html' with form=form %}
+                    {% elif description %}
+                        {{ description }}
+                    {% endif %}
+                </div>
+                <div class="modal-footer">
+                    <input class="btn btn-{% if button %}{{ button }}{% else %}primary{% endif %}" type="submit"
+                           value="{% if verb %}{{ verb }}{% else %}Submit{% endif %}">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
