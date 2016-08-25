@@ -1,4 +1,15 @@
-{% csrf_token %}
+<!--
+Parameters:
+    (required) id:          The id of the modal
+    (required) action:      The action of the form
+    (optional) enctype:     The enctype of the form
+    (required) title:       The title of the modal
+    (optional) form:        The form contained in the modal
+    (optional) description: The text contained in the modal if no form is given or required
+    (optional) button:      The class of the submit button
+    (optional) verb:        The text of the submit button
+-->
+
 <div class="modal fade phoenix-modal" id="{{ id }}" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -11,7 +22,9 @@
                     {% if form %}
                         {% include 'form.html' with form=form %}
                     {% elif description %}
-                        {{ description }}
+                        <div class="phoenix-modal-description">
+                            {{ description }}
+                        </div>
                     {% endif %}
                 </div>
                 <div class="modal-footer">
