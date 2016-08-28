@@ -1,35 +1,37 @@
 <!--
 Parameters:
-    (required) id:          The id of the modal
-    (required) action:      The action of the form
-    (optional) enctype:     The enctype of the form
-    (required) title:       The title of the modal
-    (optional) form:        The form contained in the modal
-    (optional) description: The text contained in the modal if no form is given or required
-    (optional) button:      The class of the submit button
-    (optional) verb:        The text of the submit button
+    modal: {
+        (required) id:          The id of the modal
+        (required) action:      The action of the form
+        (optional) enctype:     The enctype of the form
+        (required) title:       The title of the modal
+        (optional) form:        The form contained in the modal
+        (optional) description: The text contained in the modal if no form is given or required
+        (optional) button:      The class of the submit button
+        (optional) verb:        The text of the submit button
+    }
 -->
 
-<div class="modal fade phoenix-modal" id="{{ id }}" role="dialog">
+<div class="modal fade phoenix-modal" id="{{ modal.id }}" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ action }}" method="post" {% if enctype %}enctype="{{ enctype }}"{% endif %}>
+            <form action="{{ modal.action }}" method="post" {% if modal.enctype %}enctype="{{ modal.enctype }}"{% endif %}>
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">{{ title }}</h4>
+                    <h4 class="modal-title">{{ modal.title }}</h4>
                 </div>
                 <div class="modal-body">
-                    {% if form %}
-                        {% include 'form.html' with form=form %}
-                    {% elif description %}
+                    {% if modal.form %}
+                        {% include 'form.html' with form=modal.form %}
+                    {% elif modal.description %}
                         <div class="phoenix-modal-description">
-                            {{ description }}
+                            {{ modal.description }}
                         </div>
                     {% endif %}
                 </div>
                 <div class="modal-footer">
-                    <input class="btn btn-{% if button %}{{ button }}{% else %}primary{% endif %}" type="submit"
-                           value="{% if verb %}{{ verb }}{% else %}Submit{% endif %}">
+                    <input class="btn btn-{% if modal.button %}{{ modal.button }}{% else %}primary{% endif %}" type="submit"
+                           value="{% if modal.verb %}{{ modal.verb }}{% else %}Submit{% endif %}">
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                 </div>
             </form>
