@@ -1,6 +1,9 @@
 from django.forms.models import ModelForm
 
 
+"""
+Provides a generic interface for ModelForm using the MealSloth create_* naming convention
+"""
 class SimpleModelForm(ModelForm):
     def process_create(self):
         kwargs = {}
